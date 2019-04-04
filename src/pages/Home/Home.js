@@ -2,43 +2,41 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { selectFormatedFlights } from 'selectors/flights';
+import {
+  selectFlightsIsLoading,
+  selectFilteredFlights
+} from 'selectors/flights';
 
-import Search from './Search';
-import DataTable from 'components/DataTable';
+import FilterForm from './FilterForm';
+import Table from 'components/Table';
 
 import styles from './Home.css';
 
 const mapStateToProps = state => {
-  const flights = selectFormatedFlights(state);
-  return { flights };
+  const flights = selectFilteredFlights(state);
+  const isLoading = selectFlightsIsLoading(state);
+  return { flights, isLoading };
 };
 
 @connect(mapStateToProps)
 class Home extends Component {
   static propTypes = {
-    flights: PropTypes.array.isRequired
+    flights: PropTypes.array.isRequired,
+    isLoading: PropTypes.bool.isRequired
   };
 
-  state = {
-    conditions: {}
-  };
-
-  getFlights = (flights, coniditions) => {
-    return flights;
-  };
+  submit = values => {};
 
   render() {
-    const { conditions } = this.state;
-    const { flights } = this.props;
+    const { flights, isLoading } = this.props;
 
-    const filteredFlights = this.getFlights(flights, conditions);
     return (
       <div>
-        <Search />
-        <DataTable
+        <FilterForm onSubmit={this.submit} />
+        <Table
           className={styles.table}
-          data={filteredFlights}
+          data={flights}
+          isLoading={isLoading}
           header={[
             'id',
             'type',

@@ -12,8 +12,8 @@ const Header = () => {
         <Link className={styles.navigation} to="/">
           HOME
         </Link>
-        <Link className={styles.navigation} to="/flight-form">
-          FLIGHTS
+        <Link className={styles.navigation} to="/flight">
+          FLIGHT
         </Link>
       </Toolbar>
     </AppBar>

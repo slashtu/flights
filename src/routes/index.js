@@ -2,14 +2,14 @@ import React from 'react';
 import { Switch, Route } from 'react-router';
 
 import Home from 'pages/Home/Home';
-import FlightForm from 'pages/FlightForm/FlightForm';
+import Flight from 'pages/Flight/Flight';
 import NoMatch from 'pages/NoMatch/NoMatch';
 
 const Routes = () => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/flight-form" component={FlightForm} />
+      <Route path="/flight" component={Flight} />
       <Route component={NoMatch} />
     </Switch>
   );

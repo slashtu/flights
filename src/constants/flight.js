@@ -1,0 +1,11 @@
+export const FLIGHT_ID_LABEL = 'ID';
+export const FLIGHT_ARRIVAL_LABEL = 'ARRIVAL';
+export const FLIGHT_DEPARTURE_LABEL = 'DEPARTURE';
+export const FLIGHT_DEPARTURE_TIME_LABEL = 'DEPARTURE TIME';
+export const FLIGHT_ARRIVAL_TIME_LABEL = 'ARRIVAL TIME';
+export const FLIGHT_DATE_LABEL = 'DATE';
+export const FLIGHT_TIME_LABEL = 'TIME';
+export const FLIGHT_TYPE_LABEL = 'TYPE';
+export const TYPE_CHEAP = 'cheap';
+export const TYPE_BUSINESS = 'business';
+export const TYPES = [TYPE_CHEAP, TYPE_BUSINESS];

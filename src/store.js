@@ -4,8 +4,8 @@ import {
   compose
 } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import reducers from 'modules/reducer';
 
+import reducers from 'modules/reducer';
 import mySaga from 'modules/saga';
 
 const sagaMiddleware = createSagaMiddleware();
