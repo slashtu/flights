@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import uuidv1 from 'uuid/v1';
 import Paper from '@material-ui/core/Paper';
@@ -8,11 +10,18 @@ import FlightForm from './FlightForm';
 
 import styles from './Flight.css';
 
+@withRouter
 @connect(
   null,
   { createCheapFlight, createBusinessFlight }
 )
 class Flight extends Component {
+  static propTypes = {
+    history: PropTypes.object.isRequired,
+    createCheapFlight: PropTypes.func.isRequired,
+    createCheapFlight: PropTypes.func.isRequired
+  };
+
   submit = values => {
     const { type, departureTime, arrivalTime } = values;
 
@@ -31,6 +40,8 @@ class Flight extends Component {
     } else if (type === 'business') {
       this.props.createBusinessFlight(flight);
     }
+
+    this.props.history.push('/');
   };
   render() {
     return (

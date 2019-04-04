@@ -13,7 +13,7 @@ const getLocalIdent = generateScopedName();
 const config = {
   mode: 'production',
   entry: {
-    main: './src/client'
+    main: ['@babel/polyfill', './src/client']
   },
   output: {
     path: path.join(__dirname, '../dist/client'),

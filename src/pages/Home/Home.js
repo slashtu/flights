@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Paper from '@material-ui/core/Paper';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import {
   selectFlightsIsLoading,
@@ -8,7 +10,7 @@ import {
 } from 'selectors/flights';
 
 import FilterForm from './FilterForm';
-import Table from 'components/Table';
+import FlightsTable from './FlightsTable';
 
 import styles from './Home.css';
 
@@ -33,19 +35,15 @@ class Home extends Component {
     return (
       <div>
         <FilterForm onSubmit={this.submit} />
-        <Table
-          className={styles.table}
-          data={flights}
-          isLoading={isLoading}
-          header={[
-            'id',
-            'type',
-            'departure',
-            'arrival',
-            'departureTime',
-            'arrivalTime'
-          ]}
-        />
+        <Paper>
+          {isLoading ? (
+            <div className={styles.loading}>
+              <CircularProgress />
+            </div>
+          ) : (
+            <FlightsTable data={flights} />
+          )}
+        </Paper>
       </div>
     );
   }

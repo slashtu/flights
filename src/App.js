@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Routes from 'routes';
@@ -13,6 +14,10 @@ import './base.css';
   { fetchFlights }
 )
 class App extends Component {
+  static propTypes = {
+    fetchFlights: PropTypes.func.isRequired
+  };
+
   componentDidMount() {
     this.props.fetchFlights(['cheap', 'business']);
   }

@@ -1,6 +1,6 @@
-import axios from 'axios';
 import { call, put, all, takeEvery } from 'redux-saga/effects';
 import map from 'lodash/map';
+import flightsService from 'services/flights';
 
 export const FETCH_FLIGHTS = 'flights/FETCH_FLIGHTS';
 export const FETCH_FLIGHTS_SUCCEEDED = 'flights/FETCH_FLIGHTS_SUCCEEDED';
@@ -8,7 +8,7 @@ export const FETCH_FLIGHTS_FAILED = 'flights/FETCH_FLIGHTS_FAILED';
 export const CREATE_CHEAP_FLIGHT = 'flights/CREATE_CHEAP_FLIGHT';
 export const CREATE_BUSINESS_FLIGHT = 'flights/CREATE_BUSINESS_FLIGHT';
 
-const initialState = { cheap: [], business: [], isLoading: false };
+const initialState = { cheap: [], business: [], isLoading: true };
 
 export default (state = initialState, action) => {
   const { payload } = action;
@@ -58,12 +58,6 @@ export const createBusinessFlight = flight => {
   };
 };
 
-const Api = {
-  fetchFlights: type => {
-    return axios.get(`/api/${type}`).then(r => r.data);
-  }
-};
-
 const formatBusinessFlights = flights => {
   return map(flights, f => {
     const departureTime = f.departure;
@@ -99,7 +93,7 @@ const formatCheapFlights = flights => {
 function* fetchFlightsSaga(action) {
   try {
     const { types } = action.payload;
-    const fetcher = types.map(t => call(Api.fetchFlights, t));
+    const fetcher = types.map(t => call(flightsService.fetchFlights, t));
     const [cheap, business] = yield all(fetcher);
 
     const formatedCheap = formatCheapFlights(cheap);
@@ -110,7 +104,7 @@ function* fetchFlightsSaga(action) {
       payload: { cheap: formatedCheap, business: formatedBusiness }
     });
   } catch (e) {
-    yield put({ type: FETCH_FLIGHTS_FAILED, message: e.message });
+    yield put({ type: FETCH_FLIGHTS_FAILED, message: e });
   }
 }
 

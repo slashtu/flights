@@ -10,9 +10,3 @@
 .rowEven {
   background-color: #edf4ff;
 }
-
-.loading {
-  display: flex;
-  padding: 20px;
-  justify-content: center;
-}

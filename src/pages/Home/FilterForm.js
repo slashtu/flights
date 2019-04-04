@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
@@ -47,7 +48,7 @@ const renderDatePicker = ({ input, label }) => (
 );
 
 const FilterForm = props => {
-  const { handleSubmit, submitting } = props;
+  const { handleSubmit } = props;
   return (
     <form className={styles.container} onSubmit={handleSubmit}>
       <Grid container spacing={24}>
@@ -90,6 +91,10 @@ const FilterForm = props => {
       </Grid>
     </form>
   );
+};
+
+FilterForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired
 };
 
 export default reduxForm({ form: 'filter' })(FilterForm);
