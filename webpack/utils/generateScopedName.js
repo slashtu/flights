@@ -5,7 +5,7 @@ const generateScopedName = () => {
   const alphabet = 'abcefghijklmnopqrstuvwxyz0123456789';
   const idGenerator = incstr.idGenerator({
     alphabet,
-    prefix: '🃏'
+    prefix: '🎮'
   });
 
   return (localName, resourcePath) => {

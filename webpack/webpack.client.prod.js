@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const basic = require('./webpack.basic.js');
-const generateScopedName = require('./util/generateScopedName.js');
+const generateScopedName = require('./utils/generateScopedName.js');
 
 const getLocalIdent = generateScopedName();
 
@@ -72,6 +72,7 @@ const config = {
     new GenerateSW({
       swDest: path.resolve('./static/sw.js'),
       importWorkboxFrom: 'local',
+      skipWaiting: true,
       runtimeCaching: [
         {
           urlPattern: /images/,

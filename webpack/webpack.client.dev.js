@@ -62,6 +62,7 @@ const config = {
     }),
     new GenerateSW({
       swDest: path.resolve('./static/sw.js'),
+      skipWaiting: true,
       importWorkboxFrom: 'local',
       runtimeCaching: [
         {
