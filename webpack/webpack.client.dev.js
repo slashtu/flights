@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { GenerateSW } = require('workbox-webpack-plugin');
 
 const basic = require('./webpack.basic.js');
 
@@ -11,9 +12,9 @@ const config = {
     main: ['@babel/polyfill', './src/client']
   },
   output: {
-    path: path.resolve('./dist/client'),
+    path: path.resolve('./static/dist'),
     filename: '[name].js',
-    publicPath: '/'
+    publicPath: '/dist/'
   },
   module: {
     rules: [
@@ -58,6 +59,20 @@ const config = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css'
+    }),
+    new GenerateSW({
+      swDest: path.resolve('./static/sw.js'),
+      importWorkboxFrom: 'local',
+      runtimeCaching: [
+        {
+          urlPattern: /images/,
+          handler: 'CacheFirst'
+        },
+        {
+          urlPattern: /.*/,
+          handler: 'NetworkFirst'
+        }
+      ]
     })
   ]
 };

@@ -5,21 +5,35 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
-import sortBy from 'lodash/sortBy';
 
-import FlightsTableHead from './FlightsTableHead';
-import styles from './FlightsTable.css';
+import TableHead from 'components/TableHead';
 
 class FlightsTable extends Component {
   static propTypes = {
-    data: PropTypes.array.isRequired
+    data: PropTypes.array.isRequired,
+    classes: PropTypes.object,
+    sort: PropTypes.func,
+    rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
+    head: PropTypes.arrayOf(
+      PropTypes.shape({
+        key: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired
+      })
+    )
+  };
+
+  static defaultProps = {
+    classes: {},
+    head: [],
+    sort: ({ data }) => data,
+    rowsPerPageOptions: [20, 50]
   };
 
   state = {
     order: 'asc',
     orderBy: 'type',
     page: 0,
-    rowsPerPage: 20
+    rowsPerPageSelected: 0
   };
 
   handleRequestSort = (event, property) => {
@@ -38,26 +52,24 @@ class FlightsTable extends Component {
   };
 
   handleChangeRowsPerPage = event => {
-    this.setState({ rowsPerPage: event.target.value });
-  };
-
-  sortData = data => {
-    const { order, orderBy } = this.state;
-    return order === 'asc'
-      ? sortBy(data, [orderBy])
-      : sortBy(data, [orderBy]).reverse();
+    const rowsPerPageSelected = this.props.rowsPerPageOptions.findIndex(
+      e => e === event.target.value
+    );
+    this.setState({ rowsPerPageSelected });
   };
 
   render() {
-    const { data } = this.props;
-    const { page, rowsPerPage, order, orderBy } = this.state;
+    const { data, head, sort, classes, rowsPerPageOptions } = this.props;
+    const { page, rowsPerPageSelected, order, orderBy } = this.state;
 
-    const sortedData = this.sortData(data);
+    const rowsPerPage = rowsPerPageOptions[rowsPerPageSelected];
+    const sortedData = sort({ data, order, orderBy });
 
     return (
       <React.Fragment>
         <MUTable>
-          <FlightsTableHead
+          <TableHead
+            head={head}
             order={order}
             orderBy={orderBy}
             onRequestSort={this.handleRequestSort}
@@ -68,7 +80,7 @@ class FlightsTable extends Component {
               .map((row, i) => (
                 <TableRow
                   key={row.id}
-                  className={i % 2 ? styles.rowOdd : styles.rowEven}
+                  className={i % 2 ? classes.rowOdd : classes.rowEven}
                 >
                   <TableCell component="th" scope="row">
                     {row.id}
@@ -83,7 +95,7 @@ class FlightsTable extends Component {
           </TableBody>
         </MUTable>
         <TablePagination
-          rowsPerPageOptions={[20, 50, 100]}
+          rowsPerPageOptions={rowsPerPageOptions}
           component="div"
           count={data.length}
           rowsPerPage={rowsPerPage}

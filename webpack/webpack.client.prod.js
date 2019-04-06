@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const path = require('path');
+const { GenerateSW } = require('workbox-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -16,7 +17,7 @@ const config = {
     main: ['@babel/polyfill', './src/client']
   },
   output: {
-    path: path.join(__dirname, '../dist/client'),
+    path: path.resolve('./static/dist'),
     filename: '[name].js',
     publicPath: '/dist/'
   },
@@ -55,7 +56,7 @@ const config = {
       }
     ]
   },
-  devtool: false,
+  devtool: 'source-map',
   optimization: {
     minimizer: [new TerserPlugin(), new OptimizeCssAssetsPlugin({})]
   },
@@ -67,6 +68,20 @@ const config = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css'
+    }),
+    new GenerateSW({
+      swDest: path.resolve('./static/sw.js'),
+      importWorkboxFrom: 'local',
+      runtimeCaching: [
+        {
+          urlPattern: /images/,
+          handler: 'CacheFirst'
+        },
+        {
+          urlPattern: /.*/,
+          handler: 'NetworkFirst'
+        }
+      ]
     })
   ]
 };

@@ -6,16 +6,14 @@ const nodeExternals = require('webpack-node-externals');
 const basic = require('./webpack.basic.js');
 
 const config = {
-  mode: 'development',
   target: 'node',
   externals: [nodeExternals()],
   entry: {
-    server: './src/server/hot'
+    server: './src/server/server'
   },
   output: {
-    path: path.join(__dirname, '../dist/server'),
-    filename: '[name].js',
-    publicPath: '/dist/'
+    path: path.join(__dirname, '../build'),
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -41,4 +39,4 @@ const config = {
   ]
 };
 
-module.exports = merge(basic, config);
+module.exports = merge(config, basic);

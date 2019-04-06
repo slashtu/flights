@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
 
 import Routes from 'routes';
 import Header from 'components/Header';
@@ -8,6 +9,15 @@ import { fetchFlights } from 'modules/flights';
 
 import './normalize.css';
 import './base.css';
+
+const headerStyle = {
+  navigation: {
+    color: '#ffffff',
+    margin: '15px'
+  }
+};
+
+const FlightsHeader = withStyles(headerStyle)(Header);
 
 @connect(
   null,
@@ -25,7 +35,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Header />
+        <FlightsHeader />
         <main>
           <Routes />
         </main>

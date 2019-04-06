@@ -6,28 +6,21 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Tooltip from '@material-ui/core/Tooltip';
 
-import {
-  FLIGHT_ID_LABEL,
-  FLIGHT_ARRIVAL_LABEL,
-  FLIGHT_DEPARTURE_LABEL,
-  FLIGHT_DEPARTURE_TIME_LABEL,
-  FLIGHT_ARRIVAL_TIME_LABEL,
-  FLIGHT_TYPE_LABEL
-} from 'constants/flight';
-
-const rows = [
-  { id: 'id', label: FLIGHT_ID_LABEL },
-  { id: 'type', label: FLIGHT_TYPE_LABEL },
-  { id: 'departure', label: FLIGHT_DEPARTURE_LABEL },
-  { id: 'arrival', label: FLIGHT_ARRIVAL_LABEL },
-  { id: 'departureTime', label: FLIGHT_DEPARTURE_TIME_LABEL },
-  { id: 'arrivalTime', label: FLIGHT_ARRIVAL_TIME_LABEL }
-];
-
 class FlightsTableHead extends Component {
   static propTypes = {
-    order: PropTypes.string.isRequired,
+    head: PropTypes.arrayOf(
+      PropTypes.shape({
+        key: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired
+      })
+    ),
+    order: PropTypes.string,
     orderBy: PropTypes.string.isRequired
+  };
+
+  static defaultProps = {
+    head: [],
+    order: 'asc'
   };
 
   createSortHandler = property => event => {
@@ -35,23 +28,23 @@ class FlightsTableHead extends Component {
   };
 
   render() {
-    const { order, orderBy } = this.props;
+    const { head, order, orderBy } = this.props;
 
     return (
       <TableHead>
         <TableRow>
-          {rows.map(row => (
+          {head.map(col => (
             <TableCell
-              key={row.id}
-              sortDirection={orderBy === row.id ? order : false}
+              key={col.key}
+              sortDirection={orderBy === col.key ? order : false}
             >
               <Tooltip title="Sort" placement="bottom-end" enterDelay={300}>
                 <TableSortLabel
-                  active={orderBy === row.id}
+                  active={orderBy === col.key}
                   direction={order}
-                  onClick={this.createSortHandler(row.id)}
+                  onClick={this.createSortHandler(col.key)}
                 >
-                  {row.label}
+                  {col.label}
                 </TableSortLabel>
               </Tooltip>
             </TableCell>

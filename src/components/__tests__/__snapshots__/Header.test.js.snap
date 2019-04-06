@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> component snapshot [mount] 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Header
+      classes={Object {}}
+    >
+      <WithStyles(AppBar)
+        position="static"
+      >
+        <AppBar
+          classes={
+            Object {
+              "colorDefault": "MuiAppBar-colorDefault-7",
+              "colorPrimary": "MuiAppBar-colorPrimary-8",
+              "colorSecondary": "MuiAppBar-colorSecondary-9",
+              "positionAbsolute": "MuiAppBar-positionAbsolute-3",
+              "positionFixed": "MuiAppBar-positionFixed-2",
+              "positionRelative": "MuiAppBar-positionRelative-6",
+              "positionStatic": "MuiAppBar-positionStatic-5",
+              "positionSticky": "MuiAppBar-positionSticky-4",
+              "root": "MuiAppBar-root-1",
+            }
+          }
+          color="primary"
+          position="static"
+        >
+          <WithStyles(Paper)
+            className="MuiAppBar-root-1 MuiAppBar-positionStatic-5 MuiAppBar-colorPrimary-8"
+            component="header"
+            elevation={4}
+            square={true}
+          >
+            <Paper
+              className="MuiAppBar-root-1 MuiAppBar-positionStatic-5 MuiAppBar-colorPrimary-8"
+              classes={
+                Object {
+                  "elevation0": "MuiPaper-elevation0-12",
+                  "elevation1": "MuiPaper-elevation1-13",
+                  "elevation10": "MuiPaper-elevation10-22",
+                  "elevation11": "MuiPaper-elevation11-23",
+                  "elevation12": "MuiPaper-elevation12-24",
+                  "elevation13": "MuiPaper-elevation13-25",
+                  "elevation14": "MuiPaper-elevation14-26",
+                  "elevation15": "MuiPaper-elevation15-27",
+                  "elevation16": "MuiPaper-elevation16-28",
+                  "elevation17": "MuiPaper-elevation17-29",
+                  "elevation18": "MuiPaper-elevation18-30",
+                  "elevation19": "MuiPaper-elevation19-31",
+                  "elevation2": "MuiPaper-elevation2-14",
+                  "elevation20": "MuiPaper-elevation20-32",
+                  "elevation21": "MuiPaper-elevation21-33",
+                  "elevation22": "MuiPaper-elevation22-34",
+                  "elevation23": "MuiPaper-elevation23-35",
+                  "elevation24": "MuiPaper-elevation24-36",
+                  "elevation3": "MuiPaper-elevation3-15",
+                  "elevation4": "MuiPaper-elevation4-16",
+                  "elevation5": "MuiPaper-elevation5-17",
+                  "elevation6": "MuiPaper-elevation6-18",
+                  "elevation7": "MuiPaper-elevation7-19",
+                  "elevation8": "MuiPaper-elevation8-20",
+                  "elevation9": "MuiPaper-elevation9-21",
+                  "root": "MuiPaper-root-10",
+                  "rounded": "MuiPaper-rounded-11",
+                }
+              }
+              component="header"
+              elevation={4}
+              square={true}
+            >
+              <header
+                className="MuiPaper-root-10 MuiPaper-elevation4-16 MuiAppBar-root-1 MuiAppBar-positionStatic-5 MuiAppBar-colorPrimary-8"
+              >
+                <WithStyles(Toolbar)>
+                  <Toolbar
+                    classes={
+                      Object {
+                        "dense": "MuiToolbar-dense-40",
+                        "gutters": "MuiToolbar-gutters-38",
+                        "regular": "MuiToolbar-regular-39",
+                        "root": "MuiToolbar-root-37",
+                      }
+                    }
+                    disableGutters={false}
+                    variant="regular"
+                  >
+                    <div
+                      className="MuiToolbar-root-37 MuiToolbar-regular-39 MuiToolbar-gutters-38"
+                    >
+                      <Link
+                        to="/"
+                      >
+                        <a
+                          href="/"
+                          onClick={[Function]}
+                        >
+                          HOME
+                        </a>
+                      </Link>
+                      <Link
+                        to="/flight"
+                      >
+                        <a
+                          href="/flight"
+                          onClick={[Function]}
+                        >
+                          FLIGHT
+                        </a>
+                      </Link>
+                    </div>
+                  </Toolbar>
+                </WithStyles(Toolbar)>
+              </header>
+            </Paper>
+          </WithStyles(Paper)>
+        </AppBar>
+      </WithStyles(AppBar)>
+    </Header>
+  </Router>
+</BrowserRouter>
+`;

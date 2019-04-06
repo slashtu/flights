@@ -1,0 +1,16 @@
+{
+  "env": {
+    "test": {
+      "presets": ["@babel/env", "@babel/react"],
+      "plugins": [
+        ["module-resolver", { "root": ["./src"] }],
+
+        // Stage 2
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+
+        // Stage 3
+        ["@babel/plugin-proposal-class-properties", { "loose": false }]
+      ]
+    }
+  }
+}
