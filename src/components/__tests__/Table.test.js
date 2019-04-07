@@ -3,6 +3,8 @@ import { mount } from 'enzyme';
 import TableRow from '@material-ui/core/TableRow';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
+import TableSortLabel from '@material-ui/core/TableSortLabel';
+import TablePagination from '@material-ui/core/TablePagination';
 
 import {
   ID_LABEL,
@@ -14,6 +16,7 @@ import {
 } from 'constants/flight';
 
 import Table from '../Table';
+import TableHead from '../TableHead';
 
 const head = [
   { key: 'id', label: ID_LABEL },
@@ -45,7 +48,9 @@ const flights = [
 
 describe('<Table />', () => {
   it('component snapshot [mount]', () => {
-    const wrapper = mount(<Table data={flights} head={head} />);
+    const wrapper = mount(
+      <Table data={flights} head={head} rowsPerPageOptions={[20, 50, 100]} />
+    );
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -57,5 +62,32 @@ describe('<Table />', () => {
   it('length of fileds', () => {
     const wrapper = mount(<Table data={flights} head={head} />);
     expect(wrapper.find(TableBody).find(TableCell)).toHaveLength(12);
+  });
+
+  it('request type sort, validate the state', () => {
+    const wrapper = mount(<Table data={flights} head={head} />);
+
+    wrapper
+      .find(TableHead)
+      .find(TableCell)
+      .findWhere(n => n.key() === 'type')
+      .find(TableSortLabel)
+      .simulate('click');
+
+    expect(wrapper.state().order).toEqual('desc');
+    expect(wrapper.state().orderBy).toEqual('type');
+  });
+
+  it('click next page button', () => {
+    const wrapper = mount(
+      <Table data={flights} head={head} rowsPerPageOptions={[1]} />
+    );
+
+    wrapper
+      .find('button')
+      .at(1)
+      .simulate('click');
+
+    expect(wrapper.state().page).toEqual(1);
   });
 });

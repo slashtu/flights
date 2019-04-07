@@ -6,12 +6,12 @@ exports[`<TableHead /> component snapshot [mount] 1`] = `
     head={
       Array [
         Object {
-          "key": "cheap",
-          "label": "CHEAP",
+          "key": "id",
+          "label": "ID",
         },
         Object {
-          "key": "business",
-          "label": "BUSINESS",
+          "key": "type",
+          "label": "TYPE",
         },
       ]
     }
@@ -49,7 +49,7 @@ exports[`<TableHead /> component snapshot [mount] 1`] = `
                 className="MuiTableRow-root-2 MuiTableRow-head-5"
               >
                 <WithStyles(TableCell)
-                  key="cheap"
+                  key="id"
                   sortDirection={false}
                 >
                   <TableCell
@@ -571,7 +571,7 @@ exports[`<TableHead /> component snapshot [mount] 1`] = `
                                       tabIndex="0"
                                       title="Sort"
                                     >
-                                      CHEAP
+                                      ID
                                       <pure(ArrowDownward)
                                         className="MuiTableSortLabel-icon-29 MuiTableSortLabel-iconDirectionAsc-31"
                                       >
@@ -636,8 +636,8 @@ exports[`<TableHead /> component snapshot [mount] 1`] = `
                   </TableCell>
                 </WithStyles(TableCell)>
                 <WithStyles(TableCell)
-                  key="business"
-                  sortDirection={false}
+                  key="type"
+                  sortDirection="asc"
                 >
                   <TableCell
                     align="inherit"
@@ -657,10 +657,10 @@ exports[`<TableHead /> component snapshot [mount] 1`] = `
                         "root": "MuiTableCell-root-7",
                       }
                     }
-                    sortDirection={false}
+                    sortDirection="asc"
                   >
                     <th
-                      aria-sort={null}
+                      aria-sort="ascending"
                       className="MuiTableCell-root-7 MuiTableCell-head-8"
                       scope="col"
                     >
@@ -1060,7 +1060,7 @@ exports[`<TableHead /> component snapshot [mount] 1`] = `
                             rootRef={[Function]}
                           >
                             <WithStyles(TableSortLabel)
-                              active={false}
+                              active={true}
                               aria-describedby={null}
                               className=""
                               direction="asc"
@@ -1075,7 +1075,7 @@ exports[`<TableHead /> component snapshot [mount] 1`] = `
                             >
                               <TableSortLabel
                                 IconComponent={[Function]}
-                                active={false}
+                                active={true}
                                 aria-describedby={null}
                                 className=""
                                 classes={
@@ -1100,7 +1100,7 @@ exports[`<TableHead /> component snapshot [mount] 1`] = `
                               >
                                 <WithStyles(ButtonBase)
                                   aria-describedby={null}
-                                  className="MuiTableSortLabel-root-27"
+                                  className="MuiTableSortLabel-root-27 MuiTableSortLabel-active-28"
                                   component="span"
                                   disableRipple={true}
                                   onBlur={[Function]}
@@ -1115,7 +1115,7 @@ exports[`<TableHead /> component snapshot [mount] 1`] = `
                                   <ButtonBase
                                     aria-describedby={null}
                                     centerRipple={false}
-                                    className="MuiTableSortLabel-root-27"
+                                    className="MuiTableSortLabel-root-27 MuiTableSortLabel-active-28"
                                     classes={
                                       Object {
                                         "disabled": "MuiButtonBase-disabled-33",
@@ -1140,7 +1140,7 @@ exports[`<TableHead /> component snapshot [mount] 1`] = `
                                   >
                                     <span
                                       aria-describedby={null}
-                                      className="MuiButtonBase-root-32 MuiTableSortLabel-root-27"
+                                      className="MuiButtonBase-root-32 MuiTableSortLabel-root-27 MuiTableSortLabel-active-28"
                                       onBlur={[Function]}
                                       onClick={[Function]}
                                       onContextMenu={[Function]}
@@ -1158,7 +1158,7 @@ exports[`<TableHead /> component snapshot [mount] 1`] = `
                                       tabIndex="0"
                                       title="Sort"
                                     >
-                                      BUSINESS
+                                      TYPE
                                       <pure(ArrowDownward)
                                         className="MuiTableSortLabel-icon-29 MuiTableSortLabel-iconDirectionAsc-31"
                                       >

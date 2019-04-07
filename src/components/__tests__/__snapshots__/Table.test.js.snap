@@ -55,6 +55,7 @@ exports[`<Table /> component snapshot [mount] 1`] = `
     Array [
       20,
       50,
+      100,
     ]
   }
   sort={[Function]}
@@ -4097,6 +4098,7 @@ exports[`<Table /> component snapshot [mount] 1`] = `
       Array [
         20,
         50,
+        100,
       ]
     }
   >
@@ -4138,6 +4140,7 @@ exports[`<Table /> component snapshot [mount] 1`] = `
         Array [
           20,
           50,
+          100,
         ]
       }
     >
@@ -4707,6 +4710,12 @@ exports[`<Table /> component snapshot [mount] 1`] = `
                             >
                               50
                             </WithStyles(MenuItem)>,
+                            <WithStyles(MenuItem)
+                              className="MuiTablePagination-menuItem-54"
+                              value={100}
+                            >
+                              100
+                            </WithStyles(MenuItem)>,
                           ],
                           "classes": Object {
                             "disabled": "MuiSelect-disabled-101",
@@ -4776,6 +4785,12 @@ exports[`<Table /> component snapshot [mount] 1`] = `
                               >
                                 50
                               </WithStyles(MenuItem)>,
+                              <WithStyles(MenuItem)
+                                className="MuiTablePagination-menuItem-54"
+                                value={100}
+                              >
+                                100
+                              </WithStyles(MenuItem)>,
                             ],
                             "classes": Object {
                               "disabled": "MuiSelect-disabled-101",
@@ -4844,6 +4859,12 @@ exports[`<Table /> component snapshot [mount] 1`] = `
                                   value={50}
                                 >
                                   50
+                                </WithStyles(MenuItem)>,
+                                <WithStyles(MenuItem)
+                                  className="MuiTablePagination-menuItem-54"
+                                  value={100}
+                                >
+                                  100
                                 </WithStyles(MenuItem)>,
                               ],
                               "classes": Object {
